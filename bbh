@@ -1,0 +1,4 @@
+#!/bin/env bash
+# bbh aka Bad Boy sHell using the same password for tuns of machines
+
+sshpass -p redhat ssh -oStrictHostKeyChecking=no root@$@
