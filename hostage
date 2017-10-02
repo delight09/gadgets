@@ -1,0 +1,5 @@
+#!/bin/env sh
+# jump to your host(age) w/ mosh
+
+PORT=${2:-30022}
+mosh --ssh="ssh -p ${PORT}" $1

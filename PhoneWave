@@ -1,0 +1,20 @@
+#!/bin/sh --
+# Let's travel with O.V.E.N(Office VPN Environment Node)
+
+case "$1" in
+start)
+       echo "str0ngpassla" | exec sudo openconnect -b --pid-file=/var/run/oven.pid https://office.example.com:443 \
+         --servercert=sha256:a3a \
+         --authgroup=Group -u useremail@example.com --passwd-on-stdin
+;;
+
+stop)
+       sudo kill -HUP $(cat /var/run/oven.pid)
+;;
+
+*)
+       echo "Usage: $0 {start|stop}"
+       exit 1
+;;
+esac
+exit 0
