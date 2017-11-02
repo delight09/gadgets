@@ -11,7 +11,7 @@ COUNT=0
 
 while true
 do
-    if ! $(curl -m $SEC_MAX_WAIT -sSL -x $PROXY $TARGET); then
+    if ! $(curl -m $SEC_MAX_WAIT -sL -x $PROXY $TARGET >/dev/null); then
         if [[ $COUNT -eq $MAX_TRY ]]; then
             eval $CMD_TRIGGER
 	    COUNT=0
