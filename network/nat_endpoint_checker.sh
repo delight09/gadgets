@@ -2,8 +2,8 @@
 # check natapp proc, check logfile, post new url
 # USAGE: nat_endpoint_checker.sh (system startup / crontab)
 
-NATAPP_AUTHTOKEN=0fe7367c70378222
-SERVERCHAN_KEY=SCU14967Tb8a2240fb9881e859ba765c77730fdb659f862a2cf932
+NATAPP_AUTHTOKEN=0fe7367cxXxXxXxX
+SERVERCHAN_KEY=SCU14967TxXxXxXxXb9881e859ba765c77730fdb659f8xXxXxXxX
 LOGFILE=/tmp/natapp.log
 KEYWORD="established"
 
