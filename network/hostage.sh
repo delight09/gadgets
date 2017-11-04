@@ -2,5 +2,6 @@
 # connect host(age) w/ mosh
 # USAGE: hostage 10.0.0.1 2222
 
-PORT=${2:-30022}
-mosh --ssh="ssh -p ${PORT}" $1
+PORT_MOSH=$((RANDOM % 900 + 60099)) #skip 60000 - 60099
+PORT_SSH=${2:-30022}
+mosh -p $PORT_MOSH --ssh="ssh -p ${PORT_SSH}" $1

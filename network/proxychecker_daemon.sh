@@ -7,8 +7,10 @@ MINS_ERR_INTERVAL=2
 MINS_PASS_INTERVAL=10
 PROXY="socks://127.0.0.1:1088"
 TARGET="https://httpbin.org/ip"
+LOG_OUPUT=">> /tmp/proxychecker.log"
 SEC_CURL_MAX_WAIT=10
 CMD_TRIGGER="sudo systemctl restart proxy"
+CMD_LOGOUT="%proxy restart triggered $LOG_OUTPUT"
 
 COUNT_ERR=0
 while true
@@ -16,7 +18,7 @@ do
     if ! $(curl -m $SEC_CURL_MAX_WAIT -sL -x $PROXY $TARGET >/dev/null); then
         if [[ $COUNT_ERR -eq $(($MAX_ERR_TRY - 1)) ]]; then
             eval $CMD_TRIGGER
-            echo $(date +%D-%T)'%proxy restart triggered'
+            eval "echo "$(date +%D-%T)$CMD_LOGOUT
 	    COUNT_ERR=0
         else
             COUNT_ERR=$(($COUNT_ERR + 1))
