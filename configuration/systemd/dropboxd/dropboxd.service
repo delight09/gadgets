@@ -1,0 +1,12 @@
+[Unit]
+Description=dropboxd with systemd
+After=local-fs.target network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/dropbox/dropboxd
+Restart=on-failure
+RestartSec=4
+
+[Install]
+WantedBy=multi-user.target
