@@ -5,7 +5,7 @@
 #    fallback     ==> not defined vhost visit, use --log-format-regex
 # My apache combined Logformat, piwik do not support HTTP METHOD
 #    LogFormat "%h %u %t \"%r\" %>s %B \"%{Referer}i\" \"%{User-Agent}i\"" combined
-# USAGE: piwik_apachelog_importer.sh placeholder 3
+# USAGE: piwik_logimport_helper.sh placeholder 3
 
 PIWIK_DOMAIN=http://example.com/piwik
 RECORDERS=1
