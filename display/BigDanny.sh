@@ -1,29 +1,31 @@
 #!/bin/sh --
-# Digital BigBen, it's BigDanny
-# For now, it's dummy(no sound)
+# Digital Big Ben, it's Big Danny
+# For this moment, it's dummy(no sound effect)
+# Notice: Need `figlet` tool
+# USAGE: BigDanny.sh 30 # exit after 30 minutes
 
-## fetch fortune cookie from yiyan
-fetch_yiyan() {
-    FortuneC=$(/home/jiahao/git/fetch_yiyan/yiyan.rb)
+# GLOBAL VARIABLES
+STR_FORTUNE=''
+SEC_REFRESH_INTERVAL=5
+[ -z $1 ] && MIN_STOP=99999 || MIN_STOP=$1
+
+fetch_yiyan() { # fetch fortune cookie with yiyan API wrapper
+    STR_FORTUNE=$(yayan.tostring.rb)
 }
 
+SEC_INIT=$(date +%s)
+SEC_LAST=$((60 * ${MIN_STOP}))
+
 fetch_yiyan
-START=$(date +%s)
-[ -z $1 ] && WAIT_FIN_MINUTE=99999 || WAIT_FIN_MINUTE=$1
+while [ $(( $(date +%s) - ${SEC_LAST} )) -lt ${SEC_INIT} ]; do
+    tput clear
+    echo -e "$(date '+%m/%d'| sed -e 's/\(.\)/\1 /g')\n$(date '+%H : %M : %S')" | figlet
+    echo $STR_FORTUNE
 
-
-DURING=$((60 * ${WAIT_FIN_MINUTE}))
-while [ $(( $(date +%s) - ${DURING} )) -lt ${START} ]; do
-	tput clear
-	echo -e "$(date '+%m / %d')\n$(date '+%H : %M : %S')" | figlet
-        echo $FortuneC
-
-
-read -rsn1 -t 3 input
-if [ "$input" = "f" ]; then
-    fetch_yiyan
-fi
-
+    read -rsn1 -t $SEC_REFRESH_INTERVAL input
+    if [ "$input" = "f" ]; then
+        fetch_yiyan
+    fi
 done
 
 # Dummy solution to alert
