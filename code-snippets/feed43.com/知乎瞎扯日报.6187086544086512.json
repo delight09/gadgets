@@ -1,0 +1,12 @@
+{
+    "url": "http://phpmywind.com/x.php",
+    "encoding": "utf-8",
+    "global_pattern": "{%}",
+    "item_pattern": "<h2 class=\"question-title\">{*}\n<a href=\"{%}\"{*}>{%}</a>\n</h2>{*}\n<div class=\"meta\">{%}</div>",
+    "feed_title": "瞎扯 · 如何正确地吐槽",
+    "feed_link": "http://phpmywind.com/x.php",
+    "feed_description": "瞎扯 · 如何正确地吐槽, powered by phpmywind.com",
+    "item_title": "知乎“瞎扯”日报☺ - {%3}",
+    "item_link": "{%1}",
+    "item_template": ""
+}

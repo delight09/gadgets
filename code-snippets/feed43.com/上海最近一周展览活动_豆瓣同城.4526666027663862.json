@@ -1,0 +1,12 @@
+{
+    "url": "https://shanghai.douban.com/events/week-exhibition",
+    "encoding": "utf-8",
+    "global_pattern": "{\n  \"url\": \"https://shanghai.douban.com/events/week-exhibition\",\n  \"encoding\": \"utf-8\",\n  \"global_pattern\": \"{%}\",\n  \"item_pattern\": \"<li class=\\\"list-entry\\\" {*}\\n<div class=\\\"pic\\\">{*}\\n<img {*}src=\\\"{%}\\\"{*}\\n<div class=\\\"title\\\">{*}\\n<a href=\\\"{%}\\\" title=\\\"{%}\\\" {*}\\n</a>{*}\\n<ul class=\\\"event-meta\\\">{*}\\n<li class=\\\"event-time\\\">{*}\\n<span class=\\\"hidden-xs\\\">{%}</span>{%}<time{*}\\n<meta itemscope itemprop=\\\"location\\\" content=\\\"{%}\\\" />{*}\\n<li class=\\\"fee\\\">{%}</li>{*}\\n\\n</li>\",\n  \"feed_title\": \"上海最近一周展览活动_豆瓣同城\",\n  \"feed_link\": \"https://shanghai.douban.com/events/week-exhibition\",\n  \"feed_description\": \"上海最近一周展览活动_豆瓣,powered by feed43\",\n  \"item_title\": \"{%3}\",\n  \"item_link\": \"{%2}\",\n  \"item_template\": \"海报：{%1}\\n{%3}\\n{%4}\\n{%5}\\n{%6}\\n{%7}\"\n}",
+    "item_pattern": "<li class=\"list-entry\" {*}\n<div class=\"pic\">{*}\n<img {*}src=\"{%}\"{*}\n<div class=\"title\">{*}\n<a href=\"{%}\" title=\"{%}\" {*}\n</a>{*}\n<ul class=\"event-meta\">{*}\n<li class=\"event-time\">{*}\n<span class=\"hidden-xs\">{%}</span>{%}<time{*}\n<meta itemscope itemprop=\"location\" content=\"{%}\" />{*}\n<li class=\"fee\">{%}</li>{*}\n\n</li>",
+    "feed_title": "上海最近一周展览活动_豆瓣同城",
+    "feed_link": "https://shanghai.douban.com/events/week-exhibition",
+    "feed_description": "上海最近一周展览活动_豆瓣,powered by feed43",
+    "item_title": "{%3}",
+    "item_link": "{%2}",
+    "item_template": "海报：{%1}\n{%3}\n{%4}\n{%5}\n{%6}\n{%7}"
+}
