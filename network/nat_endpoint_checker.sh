@@ -1,6 +1,7 @@
 #!/bin/bash --
 # check natapp proc, check logfile, post new url
-# USAGE: nat_endpoint_checker.sh (system startup / crontab)
+# USAGE: nat_endpoint_checker.sh
+#        nat_endpoint_checker.sh force-restart
 
 NATAPP_AUTHTOKEN=0fe7367cxXxXxXxX
 SERVERCHAN_KEY=SCU14967TxXxXxXxXb9881e859ba765c77730fdb659f8xXxXxXxX
@@ -8,17 +9,17 @@ LOGFILE=/tmp/natapp.log
 KEYWORD="established"
 
 
-start_natapp() {
+init_natapp() {
+    pkill -9 natapp
     rm -rf $LOGFILE
     /usr/local/bin/natapp -authtoken $NATAPP_AUTHTOKEN -log stdout -loglevel INFO > $LOGFILE &
     sleep 10 # MAGIC wait for natapp connection established
 }
 
-# check natapp proc
-if $(ps -ef | grep natapp | grep -q -v grep); then
-    sleep 0; # Do nothing
+if ([[ $1 != 'force-restart' ]] && $(ps -ef | grep natapp | grep -q -v grep)); then
+    sleep 0 # Do nothing
 else
-    start_natapp
+    init_natapp
 fi
 
 ENDPOINT_URL=$(grep $KEYWORD $LOGFILE | tail -n 1 | sed 's=.*tcp://\(.*\)$=\1=')
