@@ -1,0 +1,17 @@
+[Unit]
+Description=A high performance web server and a reverse proxy server
+After=network.target
+
+[Service]
+Type=forking
+PIDFile=/run/nginx.pid
+PrivateDevices=yes
+SyslogLevel=err
+
+ExecStart=/home/Workspace/nginx/sbin/nginx -c /home/Workspace/nginx/conf/nginx.conf -g 'error_log stderr;'
+ExecReload=/home/Workspace/nginx/sbin/nginx -s reload
+KillSignal=SIGQUIT
+KillMode=mixed
+
+[Install]
+WantedBy=multi-user.target
