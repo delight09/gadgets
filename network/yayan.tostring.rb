@@ -1,5 +1,5 @@
 #!/usr/bin/ruby
-# 一言API格式化输出 => ``内容'' s:来源, 同时排除 ARGV[0]的类型
+# 一言API格式化输出 => ``内容'' s:《来源》, 同时排除 ARGV[0]制定的一言来源类型
 # NOTICE: API doc, http://hitokoto.cn/api
 # USAGE: yayan.tostring.rb 'g,f,e'
 
@@ -26,4 +26,4 @@ while $str_source == nil || $str_source == "" do
   end
   fetch_yiyan(arg_filter)
 end
-puts '``' + $str_content + '\'\' s:' + $str_source
+puts '``' + $str_content + '\'\' s:《' + $str_source + '》'
