@@ -1,0 +1,555 @@
+{
+    "Desktop Audio": {
+        "deinterlace_field_order": 0,
+        "deinterlace_mode": 0,
+        "enabled": true,
+        "filters": [
+            {
+                "deinterlace_field_order": 0,
+                "deinterlace_mode": 0,
+                "enabled": true,
+                "flags": 0,
+                "hotkeys": {},
+                "id": "gain_filter",
+                "mixers": 15,
+                "muted": false,
+                "name": "增益",
+                "push-to-mute": false,
+                "push-to-mute-delay": 0,
+                "push-to-talk": false,
+                "push-to-talk-delay": 0,
+                "settings": {
+                    "db": 10.0
+                },
+                "sync": 0,
+                "volume": 1.0
+            }
+        ],
+        "flags": 0,
+        "hotkeys": {
+            "libobs.mute": [],
+            "libobs.push-to-mute": [],
+            "libobs.push-to-talk": [],
+            "libobs.unmute": []
+        },
+        "id": "wasapi_output_capture",
+        "mixers": 15,
+        "muted": false,
+        "name": "Desktop Audio",
+        "push-to-mute": false,
+        "push-to-mute-delay": 0,
+        "push-to-talk": false,
+        "push-to-talk-delay": 0,
+        "settings": {
+            "device_id": "default"
+        },
+        "sync": 0,
+        "volume": 1.0
+    },
+    "Mic/Aux": {
+        "deinterlace_field_order": 0,
+        "deinterlace_mode": 0,
+        "enabled": true,
+        "filters": [
+            {
+                "deinterlace_field_order": 0,
+                "deinterlace_mode": 0,
+                "enabled": true,
+                "flags": 0,
+                "hotkeys": {},
+                "id": "gain_filter",
+                "mixers": 15,
+                "muted": false,
+                "name": "增益",
+                "push-to-mute": false,
+                "push-to-mute-delay": 0,
+                "push-to-talk": false,
+                "push-to-talk-delay": 0,
+                "settings": {
+                    "db": 0.0
+                },
+                "sync": 0,
+                "volume": 1.0
+            }
+        ],
+        "flags": 0,
+        "hotkeys": {
+            "libobs.mute": [],
+            "libobs.push-to-mute": [],
+            "libobs.push-to-talk": [],
+            "libobs.unmute": []
+        },
+        "id": "wasapi_input_capture",
+        "mixers": 15,
+        "muted": false,
+        "name": "Mic/Aux",
+        "push-to-mute": false,
+        "push-to-mute-delay": 0,
+        "push-to-talk": false,
+        "push-to-talk-delay": 0,
+        "settings": {
+            "device_id": "default"
+        },
+        "sync": 0,
+        "volume": 0.0
+    },
+    "current_scene": "Scene 1",
+    "current_transition": "FadeTransition",
+    "name": "untitled.json",
+    "scene_order": [
+        {
+            "name": "Scene 1"
+        },
+        {
+            "name": "Scene 2"
+        },
+        {
+            "name": "Scene 3"
+        }
+    ],
+    "sources": [
+        {
+            "deinterlace_field_order": 0,
+            "deinterlace_mode": 0,
+            "enabled": true,
+            "flags": 0,
+            "hotkeys": {},
+            "id": "image_source",
+            "mixers": 0,
+            "muted": false,
+            "name": "图片 1",
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "settings": {
+                "file": ""
+            },
+            "sync": 0,
+            "volume": 1.0
+        },
+        {
+            "deinterlace_field_order": 0,
+            "deinterlace_mode": 0,
+            "enabled": true,
+            "flags": 0,
+            "hotkeys": {},
+            "id": "text_gdiplus",
+            "mixers": 0,
+            "muted": false,
+            "name": "文本 1",
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "settings": {
+                "color": 16777215,
+                "file": "R:\\Temp\\yayan.txt",
+                "font": {
+                    "face": "微软雅黑",
+                    "flags": 0,
+                    "size": 32
+                },
+                "opacity": 100,
+                "read_from_file": true,
+                "text": "我今天没吃药，感觉自己萌萌哒。"
+            },
+            "sync": 0,
+            "volume": 1.0
+        },
+        {
+            "deinterlace_field_order": 0,
+            "deinterlace_mode": 0,
+            "enabled": true,
+            "flags": 0,
+            "hotkeys": {},
+            "id": "text_gdiplus",
+            "mixers": 0,
+            "muted": false,
+            "name": "txt_explain_countdown",
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "settings": {
+                "color": 16777215,
+                "file": "",
+                "font": {
+                    "face": "微软雅黑",
+                    "flags": 1,
+                    "size": 32
+                },
+                "opacity": 100,
+                "read_from_file": false,
+                "text": "“听君一言”技能CD "
+            },
+            "sync": 0,
+            "volume": 1.0
+        },
+        {
+            "deinterlace_field_order": 0,
+            "deinterlace_mode": 0,
+            "enabled": true,
+            "flags": 0,
+            "hotkeys": {
+                "libobs.mute": [],
+                "libobs.push-to-mute": [],
+                "libobs.push-to-talk": [],
+                "libobs.unmute": []
+            },
+            "id": "ffmpeg_source",
+            "mixers": 15,
+            "muted": false,
+            "name": "多媒体 1",
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "settings": {
+                "is_local_file": true,
+                "local_file": "R:\\15mins_countdown.mp4",
+                "looping": true,
+                "restart_on_activate": false
+            },
+            "sync": 0,
+            "volume": 1.0
+        },
+        {
+            "deinterlace_field_order": 0,
+            "deinterlace_mode": 0,
+            "enabled": true,
+            "flags": 0,
+            "hotkeys": {},
+            "id": "text_gdiplus",
+            "mixers": 0,
+            "muted": false,
+            "name": "txt_explain_showoff",
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "settings": {
+                "color": 16777215,
+                "file": "",
+                "font": {
+                    "face": "微软雅黑",
+                    "flags": 0,
+                    "size": 32
+                },
+                "opacity": 100,
+                "read_from_file": false,
+                "text": "--------------\r\n《== 2017年 51周 - 头图简介：\r\n出自G社2000年动画《特别的她》\r\n第3话 - Maruraba @ 00:04\r\n“戏称”办公室表子(office slut)"
+            },
+            "sync": 0,
+            "volume": 1.0
+        },
+        {
+            "deinterlace_field_order": 0,
+            "deinterlace_mode": 0,
+            "enabled": true,
+            "flags": 0,
+            "hotkeys": {
+                "hotkey_start": [],
+                "hotkey_stop": []
+            },
+            "id": "game_capture",
+            "mixers": 0,
+            "muted": false,
+            "name": "media_mountain",
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "settings": {
+                "anti_cheat_hook": false,
+                "capture_any_fullscreen": false,
+                "capture_mode": "window",
+                "sli_compatibility": false,
+                "window": "Mountain:UnityWndClass:Mountain.exe"
+            },
+            "sync": 0,
+            "volume": 1.0
+        },
+        {
+            "deinterlace_field_order": 0,
+            "deinterlace_mode": 0,
+            "enabled": true,
+            "flags": 0,
+            "hotkeys": {},
+            "id": "image_source",
+            "mixers": 0,
+            "muted": false,
+            "name": "pic_showoff",
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "settings": {
+                "file": "C:\\Users\\dummyred\\Pictures\\anime\\FLCL\\IMG_0079.PNG"
+            },
+            "sync": 0,
+            "volume": 1.0
+        },
+        {
+            "deinterlace_field_order": 0,
+            "deinterlace_mode": 0,
+            "enabled": true,
+            "flags": 0,
+            "hotkeys": {},
+            "id": "scene",
+            "mixers": 0,
+            "muted": false,
+            "name": "Scene 3",
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "settings": {
+                "items": []
+            },
+            "sync": 0,
+            "volume": 1.0
+        },
+        {
+            "deinterlace_field_order": 0,
+            "deinterlace_mode": 0,
+            "enabled": true,
+            "flags": 0,
+            "hotkeys": {},
+            "id": "scene",
+            "mixers": 0,
+            "muted": false,
+            "name": "Scene 2",
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "settings": {
+                "items": []
+            },
+            "sync": 0,
+            "volume": 1.0
+        },
+        {
+            "deinterlace_field_order": 0,
+            "deinterlace_mode": 0,
+            "enabled": true,
+            "flags": 0,
+            "hotkeys": {
+                "libobs.hide_scene_item.图片 1": [],
+                "libobs.hide_scene_item.多媒体 1": [],
+                "libobs.hide_scene_item.文本 1": [],
+                "libobs.hide_scene_item.游戏源 1": [],
+                "libobs.show_scene_item.图片 1": [],
+                "libobs.show_scene_item.多媒体 1": [],
+                "libobs.show_scene_item.文本 1": [],
+                "libobs.show_scene_item.游戏源 1": []
+            },
+            "id": "scene",
+            "mixers": 0,
+            "muted": false,
+            "name": "Scene 1",
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "settings": {
+                "items": [
+                    {
+                        "align": 5,
+                        "bounds": {
+                            "x": 960.0,
+                            "y": 720.0
+                        },
+                        "bounds_align": 0,
+                        "bounds_type": 0,
+                        "crop_bottom": 0,
+                        "crop_left": 0,
+                        "crop_right": 0,
+                        "crop_top": 0,
+                        "flip_horizonally": false,
+                        "flip_vertically": false,
+                        "name": "pic_showoff",
+                        "pos": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "rot": 0.0,
+                        "scale": {
+                            "x": 0.46875,
+                            "y": 0.46875
+                        },
+                        "scale_filter": "disable",
+                        "visible": true
+                    },
+                    {
+                        "align": 5,
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "bounds_align": 0,
+                        "bounds_type": 0,
+                        "crop_bottom": 0,
+                        "crop_left": 0,
+                        "crop_right": 0,
+                        "crop_top": 0,
+                        "flip_horizonally": false,
+                        "flip_vertically": false,
+                        "name": "media_mountain",
+                        "pos": {
+                            "x": 960.0,
+                            "y": 0.0
+                        },
+                        "rot": 0.0,
+                        "scale": {
+                            "x": 0.9609609842300415,
+                            "y": 0.9609609842300415
+                        },
+                        "scale_filter": "disable",
+                        "visible": true
+                    },
+                    {
+                        "align": 5,
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "bounds_align": 0,
+                        "bounds_type": 0,
+                        "crop_bottom": 0,
+                        "crop_left": 0,
+                        "crop_right": 0,
+                        "crop_top": 0,
+                        "flip_horizonally": false,
+                        "flip_vertically": false,
+                        "name": "txt_explain_showoff",
+                        "pos": {
+                            "x": 960.0,
+                            "y": 581.10205078125
+                        },
+                        "rot": 0.0,
+                        "scale": {
+                            "x": 0.8461538553237915,
+                            "y": 0.84693878889083862
+                        },
+                        "scale_filter": "disable",
+                        "visible": true
+                    },
+                    {
+                        "align": 5,
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "bounds_align": 0,
+                        "bounds_type": 0,
+                        "crop_bottom": 0,
+                        "crop_left": 0,
+                        "crop_right": 0,
+                        "crop_top": 0,
+                        "flip_horizonally": false,
+                        "flip_vertically": false,
+                        "name": "多媒体 1",
+                        "pos": {
+                            "x": 1173.0,
+                            "y": 330.0
+                        },
+                        "rot": 0.0,
+                        "scale": {
+                            "x": 0.390625,
+                            "y": 0.3928571343421936
+                        },
+                        "scale_filter": "disable",
+                        "visible": true
+                    },
+                    {
+                        "align": 5,
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "bounds_align": 0,
+                        "bounds_type": 0,
+                        "crop_bottom": 0,
+                        "crop_left": 0,
+                        "crop_right": 0,
+                        "crop_top": 0,
+                        "flip_horizonally": false,
+                        "flip_vertically": false,
+                        "name": "txt_explain_countdown",
+                        "pos": {
+                            "x": 960.0,
+                            "y": 332.0
+                        },
+                        "rot": 0.0,
+                        "scale": {
+                            "x": 0.91056913137435913,
+                            "y": 0.90625
+                        },
+                        "scale_filter": "disable",
+                        "visible": true
+                    },
+                    {
+                        "align": 5,
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "bounds_align": 0,
+                        "bounds_type": 0,
+                        "crop_bottom": 0,
+                        "crop_left": 0,
+                        "crop_right": 0,
+                        "crop_top": 0,
+                        "flip_horizonally": false,
+                        "flip_vertically": false,
+                        "name": "文本 1",
+                        "pos": {
+                            "x": 972.0,
+                            "y": 386.0
+                        },
+                        "rot": 0.0,
+                        "scale": {
+                            "x": 0.85492229461669922,
+                            "y": 0.85606062412261963
+                        },
+                        "scale_filter": "disable",
+                        "visible": true
+                    },
+                    {
+                        "align": 5,
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "bounds_align": 0,
+                        "bounds_type": 0,
+                        "crop_bottom": 0,
+                        "crop_left": 0,
+                        "crop_right": 0,
+                        "crop_top": 0,
+                        "flip_horizonally": false,
+                        "flip_vertically": false,
+                        "name": "图片 1",
+                        "pos": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "rot": 0.0,
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0
+                        },
+                        "scale_filter": "disable",
+                        "visible": true
+                    }
+                ]
+            },
+            "sync": 0,
+            "volume": 1.0
+        }
+    ],
+    "transition_duration": 300,
+    "transitions": []
+}

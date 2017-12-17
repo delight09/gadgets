@@ -1,0 +1,10 @@
+URL: "http://live.bilibili.com/344428"
+software: bilibili livehime 1.12
+date_end: nil
+date_start: 20171204
+explains:
+  directory:
+  - server # serve metadata for client to stream
+  - client # run helper scripts to retrive metadata and do streaming
+  file:
+  - untitled.json # livehime scenes settings, located under %LOCALAPPDATA%\bililive\User Data\<user id>
