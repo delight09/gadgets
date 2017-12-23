@@ -18,7 +18,8 @@ If ( NumberOfParameters >= 1 )
     return
 }
 
-; Parse notation
+; Parse 
+cur_line = 1
 Loop {
     FileReadLine, line, %A_ScriptDir%\%rURL_sheet%, %A_Index%
 	; Process metadata
@@ -34,11 +35,14 @@ Loop {
 		continue
 	}
 	
-	; player logic TODO boost with []
+	; Update on player.txt
+	Run, %A_ScriptDir%\helper_make_txt_player.bat %cur_line% "%line%"
+	cur_line += 1
+	
+	; Player logic TODO boost with []
 	wait_pulse = %wait_beat% / 2.22 ; the 2.22 is MAGIC
     i = 1 ;SubStr() takes first char with index 1
     StringLen, range, line
-;MsgBox, current line %line% with %range% ;debug
     Loop %range% {
         note := SubStr(line, i, 1)
         i += 1
