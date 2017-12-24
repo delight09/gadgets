@@ -2,18 +2,55 @@
 # Make txt, list sheets dir in pretty way
 
 FD_TEMP=/tmp/temp.librarylist.raw
-FD_DEST=/cygdrive/r/txt/librarylist.txt
+FD_TEMP_FIN=/tmp/temp.librarylist.fin.raw
+FD_DEST1=/cygdrive/r/txt/librarylist_1.txt
+FD_DEST2=/cygdrive/r/txt/librarylist_2.txt
+RPATH_SHEET_DIR="sheets"
+STR_SPECIAL_SHEET="danmaku"
+LIMIT_LINES_FILE1=12
 
-ls sheets | grep -v danmaku > $FD_TEMP
-sed -i 's/.mnt.txt//g' $FD_TEMP
+# Init
+_t=""
+rm -f $FD_TEMP
 
-sed -i '1,12 s/$/|/g' $FD_TEMP
-sed -n '13,$p' $FD_TEMP >${FD_TEMP}.yet
-sed -i '13,$d' $FD_TEMP
-paste $FD_TEMP ${FD_TEMP}.yet >${FD_TEMP}.fin
+# Real world character length
+LEN_NON_ANSI=2
+getRWLength() {
+    local _string=$1
+	local _count=0
+	
+	for i in $(seq 0 $((${#_string} - 1)))
+	do
+	    if echo ${_string:$i:1} | grep -qE '[a-z,A-Z]'
+		then
+		    _count=$(($_count + 1))
+		else
+		    _count=$(($_count + $LEN_NON_ANSI))
+		fi
+	done
+	echo $_count
+}
 
-echo '曲库' > $FD_TEMP
-column -s '|' -t -c 80 -o ' ' ${FD_TEMP}.fin >> $FD_TEMP
-cat $FD_TEMP
 
-cp $FD_TEMP $FD_DEST
+for i in $(ls $RPATH_SHEET_DIR | grep -v $STR_SPECIAL_SHEET)
+do
+    _t=${i%.mnt.txt}
+	_t="${_t%.*} - feat.${_t#*.}"
+	
+	echo $(getRWLength "$_t")" $_t" >> $FD_TEMP
+	
+done 
+# Sort sheet files with RWLength
+cat $FD_TEMP | sort -n -s | cut -d" " -f2- >$FD_TEMP_FIN
+
+# Split lines to FD_DEST1 and FD_DEST2
+rm -f $FD_DEST1 $FD_DEST2
+_loop_times=$(($(wc -l $FD_TEMP | cut -d " " -f1) - $LIMIT_LINES_FILE1))
+for i in $(seq 1 $_loop_times)
+do
+    sed -n "$(($i * 2 -1)),$(($i * 2 -1))p" $FD_TEMP_FIN >>$FD_DEST1
+	sed -n "$(($i * 2)),$(($i * 2))p" $FD_TEMP_FIN >>$FD_DEST2
+	
+done
+# Padding rest to FD_DEST1
+sed -n "$(($_loop_times * 2 + 1)),\$p" $FD_TEMP_FIN >>$FD_DEST1

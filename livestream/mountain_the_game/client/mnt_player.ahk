@@ -35,7 +35,7 @@ Loop {
 		continue
 	}
 	
-	; Update on player.txt
+	; Update current note on player.txt
 	Run, %A_ScriptDir%\helper_make_txt_player.bat %cur_line% "%line%"
 	cur_line += 1
 	
