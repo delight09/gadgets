@@ -3,87 +3,103 @@
 
 SEC_INTRALIST_INTERVAL=3
 SEC_AWAKE_INTERVAL=5
-FD_PLAYER_HANDLER_PIDFILE="/tmp/playlist_handler.pid"
+FD_PLAYLIST_HANDLER_PIDFILE="/tmp/playlist_handler.pid"
+FD_PROCESS_LOCK="/tmp/playlist_handler.lock"
 URL_PLAYLIST="/cygdrive/r/txt/playlist.txt"
+FD_DIST="/cygdrive/r/txt/player.txt"
 MAGIC_SHEET_NIL="Tuturu~ ♫"
 MAGIC_USER_NIL="Akarin"
 
-old_worker() {
-    local _user=$1 # TODO make a background worker
-	local _url_sheet=$2
-
-    ./make_txt_player.sh cur $_url_sheet $_user
-    /cygdrive/c/Program\ Files\ \(x86\)/ahk/AutoHotkeyU32.exe mnt_player-ng.ahk $_url_sheet # TODO $_user_beat
-
-}
 
 updatePlayerTXTCurrent() {
     local _user=$1
-	local _url_sheet=$2
+    local _url_sheet=$2
+    local _user_beat=$3
 
-    ./make_txt_player.sh cur "$_url_sheet" "$_user"
+    ./make_txt_player.sh cur "$_url_sheet" "$_user" "$_user_beat"
 
 }
 
 updatePlayerTXTNext() {
     local _user=$1
-	local _url_sheet=$2
+    local _url_sheet=$2
 
     ./make_txt_player.sh nxt "$_url_sheet" "$_user"
 
 }
 
-parsePlaylist() {
-    local _line=$(wc -l $URL_PLAYLIST | cut -d " " -f1)
-	local _t_user=""
-	local _t_sheet=""
-	
-	
-    if [[ -f $URL_PLAYLIST ]];then
-	    while [[ $_line -gt 0 ]];
-	    do
-	        if [[ $_line -eq 1 ]];then
-			    updatePlayerTXTNext "$MAGIC_USER_NIL" "$MAGIC_SHEET_NIL"
-			else
-		    	_t_user=$(sed -n '2,2p' $URL_PLAYLIST | awk -F '>' '{print $1}')
-		    	_t_sheet=$(sed -n '2,2p' $URL_PLAYLIST | awk -F '>' '{print $2}')
-		    	updatePlayerTXTNext  "$_t_user" "$_t_sheet"
-		    fi
-			
-			# Get top metadata, TODO beat($3)
-			_t_user=$(sed -n '1,1p' $URL_PLAYLIST | awk -F '>' '{print $1}')
-			_t_sheet=$(sed -n '1,1p' $URL_PLAYLIST | awk -F '>' '{print $2}')
-			updatePlayerTXTCurrent "$_t_user" "$_t_sheet"
-			
-			# Play the sheet, TODO beat($2)
-			parseSheet $_t_sheet
-			sleep $SEC_INTRALIST_INTERVAL
-			
-			sed -i '1,1d' $URL_PLAYLIST
-			_line=$(($_line - 1))
-        done
-		# Cleanup player.txt on empty playlist
-		updatePlayerTXTCurrent "$MAGIC_USER_NIL" "$MAGIC_SHEET_NIL"
-	    sed -i "3,3 s<.*<>>><" $FD_DIST
+updatePlayerTXTPointerMetadata() {
+    local _url_sheet=$1
+    
+    ./make_txt_player.sh ptr 0 "$(sed -n '1,1p' $_url_sheet)"
 
+}
+
+updatePlayerTXTWait() {
+    ./make_txt_player.sh wat
+
+}
+
+parsePlaylist() {
+    local _line=""
+    local _t_user=""
+    local _t_sheet=""
+    local _t_user_beat=""
+    
+    # Process playlist if no lock
+    if [[ ! -f $FD_PROCESS_LOCK ]];then
+	touch $FD_PROCESS_LOCK
+	_line=$(wc -l $URL_PLAYLIST | cut -d " " -f1)
 	
-	
-	fi #TODO error handle
+	while [[ $_line -gt 0 ]];
+	do
+	    if [[ $_line -eq 1 ]];then
+		updatePlayerTXTNext "$MAGIC_USER_NIL" "$MAGIC_SHEET_NIL"
+	    else
+		_t_user=$(sed -n '2,2p' $URL_PLAYLIST | awk -F '>' '{print $1}')
+		_t_sheet=$(sed -n '2,2p' $URL_PLAYLIST | awk -F '>' '{print $2}')
+		updatePlayerTXTNext  "$_t_user" "$_t_sheet"
+	    fi
+	    
+	    # Get top metadata
+	    _t_user=$(sed -n '1,1p' $URL_PLAYLIST | awk -F '>' '{print $1}')
+	    _t_sheet=$(sed -n '1,1p' $URL_PLAYLIST | awk -F '>' '{print $2}')
+	    _t_user_beat=$(sed -n '1,1p' $URL_PLAYLIST | awk -F '>' '{print $3}')
+	    updatePlayerTXTCurrent "$_t_user" "$_t_sheet" "$_t_user_beat"
+	    updatePlayerTXTPointerMetadata "$_t_sheet"
+	    
+	    # Play the sheet
+	    parseSheet "$_t_sheet" "$_t_user_beat"
+	    updatePlayerTXTWait
+	    sleep $SEC_INTRALIST_INTERVAL
+	    
+	    sed -i '1,1d' $URL_PLAYLIST
+	    _line=$(wc -l $URL_PLAYLIST | cut -d " " -f1) # daemon_danmaku_checker would async update playlist.txt
+        done
+	# Cleanup player.txt on empty playlist
+	updatePlayerTXTCurrent "$MAGIC_USER_NIL" "$MAGIC_SHEET_NIL"
+        rm -rf $FD_PROCESS_LOCK
+    fi
 
 }
 
 parseSheet() {
-	local _url_sheet=$1
-	local _user_beat=$2
+    local _url_sheet="$1"
+    local _user_beat="$2"
 
-    /cygdrive/c/Program\ Files\ \(x86\)/ahk/AutoHotkeyU32.exe mnt_player-ng.ahk $_url_sheet # TODO $_user_beat
-
+    if [[ ! -z $_user_beat ]];then
+        /cygdrive/c/Program\ Files\ \(x86\)/ahk/AutoHotkeyU32.exe mnt_player-ng.ahk "$_url_sheet" "$_user_beat"
+    else
+	/cygdrive/c/Program\ Files\ \(x86\)/ahk/AutoHotkeyU32.exe mnt_player-ng.ahk "$_url_sheet"
+    fi
 }
 
 trap parsePlaylist SIGUSR1
 
 # Main
-echo $$ > $FD_PLAYER_HANDLER_PIDFILE
+echo $$ > $FD_PLAYLIST_HANDLER_PIDFILE
+rm -rf $FD_PROCESS_LOCK
+
 while true
 do
     sleep $SEC_AWAKE_INTERVAL
