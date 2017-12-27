@@ -1,17 +1,10 @@
 #!/bin/bash
 # Read and parse danmaku from database
 
-URL_DB="/cygdrive/c/Users/dummyred/AppData/Local/bililive/User Data/90369/bililive.db"
-URL_STATUS="/cygdrive/r/txt/status.txt"
-URL_LOG_BACKLOG="/cygdrive/r/txt/backlog.txt"
-URL_PLAYLIST="/cygdrive/r/txt/playlist.txt"
-FD_PLAYLIST_HANDLER_PIDFILE="/tmp/playlist_handler.pid"
-RPATH_SHEET_DIR="sheets"
-SEC_DB_CHECK_INTERVAL=1.0
-MULTI_FADEOUT_STATUS=8 # (SEC_DB_CHECK_INTERVAL * MULTI_FADEOUT_STATUS) seconds to fadeout status.txt
+# Import configure
+source env.conf
 
-MAGIC_SHEET_NIL="Tuturu~ ♫"
-MAGIC_USER_NIL="Akarin"
+# MAGIC global variables
 MAGIC_FINGERPRINT=""
 MAGIC_FADEOUT=0
 INDEX_LAST_READ="0"
@@ -19,19 +12,14 @@ INDEX_PROCESS="0"
 STR_TABLE="danmaku_ex"
 SQL_VIEW="select type,uname,text from $STR_TABLE where id="
 TYPE_ISGIFT="2"
-LIMIT_WRAP_STATUS=23
-LIMIT_LINES_STATUS=6
-LIMITE_FADEOUT_STATUS=1
-LIMIT_USER_BEAT_MAX=666
-LIMIT_USER_BEAT_MIN=99
 
 getDanmakuCount() {
-    echo $(sqlite3 "${URL_DB}" "select COUNT(*) from $STR_TABLE")
+    echo $(sqlite3 "${FD_LIVEHIME_DB}" "select COUNT(*) from $STR_TABLE")
 
 }
 
 checkUpdate_db() {
-    local _cur=$(stat --format="%Y" "$URL_DB")
+    local _cur=$(stat --format="%Y" "$FD_LIVEHIME_DB")
 
     if [[ $_cur -eq $MAGIC_FINGERPRINT ]];then
 	return 1
@@ -44,7 +32,7 @@ checkUpdate_db() {
 
 queryDanmakuContent() {
     local _id_db=$1
-    sqlite3 "$URL_DB" "$SQL_VIEW"${_id_db}";"
+    sqlite3 "$FD_LIVEHIME_DB" "$SQL_VIEW"${_id_db}";"
 
 }
 
@@ -52,15 +40,14 @@ updateStatus() {
     local _content=$1
     
     # Write to backlog
-    echo $_content | sed "s/.\{$LIMIT_WRAP_STATUS\}/&\n/" >> $URL_LOG_BACKLOG # Wrap the first $LIMIT_WRAP_STATUS chars
-    
+    echo $_content | sed "s/.\{$LIMIT_WRAP_STATUS\}/&\n/" >> $FD_LOG_BACKLOG # Wrap the first $LIMIT_WRAP_STATUS chars
     # Update in status.txt
-    tail -n $LIMIT_LINES_STATUS $URL_LOG_BACKLOG  >$URL_STATUS
+    tail -n $LIMIT_LINES_STATUS $FD_LOG_BACKLOG  >$FD_STATUS
 }
 
 processStatusFadeOut() {
     if [[ $MAGIC_FADEOUT -eq $MULTI_FADEOUT_STATUS ]];then
-	sed -i "1,${LIMITE_FADEOUT_STATUS}d" $URL_STATUS
+	sed -i "1,${LIMIT_LINES_FADEOUT}d" $FD_STATUS
         MAGIC_FADEOUT=0
     fi
 }
@@ -79,7 +66,7 @@ parseContentOnCmd() {
     if [[ ! -z $_user_beat ]];then
 	_entry_playlist="${_entry_playlist}>${_user_beat}"
     fi
-    echo "$_entry_playlist" >> $URL_PLAYLIST 
+    echo "$_entry_playlist" >> $FD_PLAYLIST 
     updateStatus "由${_user}提名, '${_friendly_sheet}' 成功加入演奏列表"
     parsePlaylist
 }
@@ -104,9 +91,7 @@ checkValiadCmd() {
 	fi
     fi
     return 1
-    
 
-    
 }
 
 parseDanmaku() {
@@ -160,10 +145,10 @@ updatePlayerTXTNext() {
 
 parsePlaylist() {
     # Update next part in player.txt 
-    local _line=$(wc -l $URL_PLAYLIST | cut -d " " -f1)
+    local _line=$(wc -l $FD_PLAYLIST | cut -d " " -f1)
     if [[ $_line -eq 2 ]];then
-	_t_user=$(sed -n '2,2p' $URL_PLAYLIST | awk -F '>' '{print $1}')
-	_t_sheet=$(sed -n '2,2p' $URL_PLAYLIST | awk -F '>' '{print $2}')
+	_t_user=$(sed -n '2,2p' $FD_PLAYLIST | awk -F '>' '{print $1}')
+	_t_sheet=$(sed -n '2,2p' $FD_PLAYLIST | awk -F '>' '{print $2}')
 	updatePlayerTXTNext  "$_t_user" "$_t_sheet"
     fi
     
@@ -171,23 +156,24 @@ parsePlaylist() {
 
 }
 
-updateStatusFriendlyExit() {
+updatePlayerTXTFriendlyExit() {
     ./make_txt_player.sh wat
     exit 1
 }
 
-updateStatusFriendlyStartup() {
+updatePlayerTXTFriendlyStartup() {
     ./make_txt_player.sh cur "$MAGIC_SHEET_NIL" "$MAGIC_USER_NIL"
 }
 
 # Main
-trap updateStatusFriendlyExit SIGINT SIGTERM
+trap updatePlayerTXTFriendlyExit SIGINT SIGTERM
 
 (./daemon_playlist_handler.sh) &
 sleep 1.0 # Wait for daemon startup
+echo 'Init!' >> $FD_STATUS
 INDEX_LAST_READ=$(getDanmakuCount)
 PID_PLAYLIST_HANDLER=$(cat $FD_PLAYLIST_HANDLER_PIDFILE)
-updateStatusFriendlyStartup
+updatePlayerTXTFriendlyStartup
 
 while true
 do

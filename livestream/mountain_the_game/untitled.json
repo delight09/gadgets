@@ -114,16 +114,25 @@
             "enabled": true,
             "flags": 0,
             "hotkeys": {},
-            "id": "image_source",
+            "id": "text_gdiplus",
             "mixers": 0,
             "muted": false,
-            "name": "图片 1",
+            "name": "mnt_txt_librarylist_title",
             "push-to-mute": false,
             "push-to-mute-delay": 0,
             "push-to-talk": false,
             "push-to-talk-delay": 0,
             "settings": {
-                "file": ""
+                "color": 16777215,
+                "file": "",
+                "font": {
+                    "face": "微软雅黑",
+                    "flags": 0,
+                    "size": 35
+                },
+                "opacity": 100,
+                "read_from_file": false,
+                "text": "~大山曲库~"
             },
             "sync": 0,
             "volume": 1.0
@@ -137,7 +146,249 @@
             "id": "text_gdiplus",
             "mixers": 0,
             "muted": false,
-            "name": "文本 1",
+            "name": "mnt_txt_librarylist2",
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "settings": {
+                "color": 16777215,
+                "file": "R:\\txt\\librarylist_2.txt",
+                "font": {
+                    "face": "微软雅黑",
+                    "flags": 0,
+                    "size": 24
+                },
+                "opacity": 100,
+                "read_from_file": true,
+                "text": "我今天没吃药，感觉自己萌萌哒。"
+            },
+            "sync": 0,
+            "volume": 1.0
+        },
+        {
+            "deinterlace_field_order": 0,
+            "deinterlace_mode": 0,
+            "enabled": true,
+            "flags": 0,
+            "hotkeys": {},
+            "id": "text_gdiplus",
+            "mixers": 0,
+            "muted": false,
+            "name": "mnt_txt_status",
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "settings": {
+                "color": 16777215,
+                "file": "R:\\txt\\status.txt",
+                "font": {
+                    "face": "微软雅黑",
+                    "flags": 0,
+                    "size": 21
+                },
+                "opacity": 100,
+                "read_from_file": true,
+                "text": "我今天没吃药，感觉自己萌萌哒。"
+            },
+            "sync": 0,
+            "volume": 1.0
+        },
+        {
+            "deinterlace_field_order": 0,
+            "deinterlace_mode": 0,
+            "enabled": true,
+            "filters": [
+                {
+                    "deinterlace_field_order": 0,
+                    "deinterlace_mode": 0,
+                    "enabled": true,
+                    "flags": 0,
+                    "hotkeys": {},
+                    "id": "color_filter",
+                    "mixers": 0,
+                    "muted": false,
+                    "name": "color_filter",
+                    "push-to-mute": false,
+                    "push-to-mute-delay": 0,
+                    "push-to-talk": false,
+                    "push-to-talk-delay": 0,
+                    "settings": {
+                        "opacity": 10
+                    },
+                    "sync": 0,
+                    "volume": 1.0
+                }
+            ],
+            "flags": 0,
+            "hotkeys": {},
+            "id": "image_source",
+            "mixers": 0,
+            "muted": false,
+            "name": "mnt_pic_hbar",
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "settings": {
+                "file": "C:\\Users\\dummyred\\Pictures\\bar_h.png"
+            },
+            "sync": 0,
+            "volume": 1.0
+        },
+        {
+            "deinterlace_field_order": 0,
+            "deinterlace_mode": 0,
+            "enabled": true,
+            "filters": [
+                {
+                    "deinterlace_field_order": 0,
+                    "deinterlace_mode": 0,
+                    "enabled": true,
+                    "flags": 0,
+                    "hotkeys": {},
+                    "id": "color_filter",
+                    "mixers": 0,
+                    "muted": false,
+                    "name": "color_filter",
+                    "push-to-mute": false,
+                    "push-to-mute-delay": 0,
+                    "push-to-talk": false,
+                    "push-to-talk-delay": 0,
+                    "settings": {
+                        "opacity": 9
+                    },
+                    "sync": 0,
+                    "volume": 1.0
+                }
+            ],
+            "flags": 0,
+            "hotkeys": {},
+            "id": "image_source",
+            "mixers": 0,
+            "muted": false,
+            "name": "mnt_pic_vbar",
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "settings": {
+                "file": "C:\\Users\\dummyred\\Pictures\\bar_v.png"
+            },
+            "sync": 0,
+            "volume": 1.0
+        },
+        {
+            "deinterlace_field_order": 0,
+            "deinterlace_mode": 0,
+            "enabled": true,
+            "flags": 0,
+            "hotkeys": {},
+            "id": "text_gdiplus",
+            "mixers": 0,
+            "muted": false,
+            "name": "mnt_txt_librarylist1",
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "settings": {
+                "color": 16777215,
+                "file": "R:\\txt\\librarylist_1.txt",
+                "font": {
+                    "face": "微软雅黑",
+                    "flags": 0,
+                    "size": 24
+                },
+                "opacity": 100,
+                "read_from_file": true,
+                "text": "我今天没吃药，感觉自己萌萌哒。"
+            },
+            "sync": 0,
+            "volume": 1.0
+        },
+        {
+            "deinterlace_field_order": 0,
+            "deinterlace_mode": 0,
+            "enabled": true,
+            "filters": [
+                {
+                    "deinterlace_field_order": 0,
+                    "deinterlace_mode": 0,
+                    "enabled": true,
+                    "flags": 0,
+                    "hotkeys": {},
+                    "id": "color_filter",
+                    "mixers": 0,
+                    "muted": false,
+                    "name": "color_filter",
+                    "push-to-mute": false,
+                    "push-to-mute-delay": 0,
+                    "push-to-talk": false,
+                    "push-to-talk-delay": 0,
+                    "settings": {
+                        "opacity": 54
+                    },
+                    "sync": 0,
+                    "volume": 1.0
+                }
+            ],
+            "flags": 0,
+            "hotkeys": {},
+            "id": "image_source",
+            "mixers": 0,
+            "muted": false,
+            "name": "pic_roundbox",
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "settings": {
+                "file": "C:\\Users\\dummyred\\Pictures\\background_roundbox.png"
+            },
+            "sync": 0,
+            "volume": 1.0
+        },
+        {
+            "deinterlace_field_order": 0,
+            "deinterlace_mode": 0,
+            "enabled": true,
+            "flags": 0,
+            "hotkeys": {},
+            "id": "text_gdiplus",
+            "mixers": 0,
+            "muted": false,
+            "name": "txt_sourcecode",
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "settings": {
+                "color": -1,
+                "file": "",
+                "font": {
+                    "face": "微软雅黑",
+                    "flags": 2,
+                    "size": 32
+                },
+                "opacity": 77,
+                "read_from_file": false,
+                "text": "直播脚本源代码 https://github.com/delight09/gadgets\r\n->livestream/mountain_the_game"
+            },
+            "sync": 0,
+            "volume": 1.0
+        },
+        {
+            "deinterlace_field_order": 0,
+            "deinterlace_mode": 0,
+            "enabled": true,
+            "flags": 0,
+            "hotkeys": {},
+            "id": "text_gdiplus",
+            "mixers": 0,
+            "muted": false,
+            "name": "txt_yayan",
             "push-to-mute": false,
             "push-to-mute-delay": 0,
             "push-to-talk": false,
@@ -151,8 +402,8 @@
                     "size": 32
                 },
                 "opacity": 100,
-                "read_from_file": true,
-                "text": "我今天没吃药，感觉自己萌萌哒。"
+                "read_from_file": false,
+                "text": "Do have faith in what you\r\nare doing. <3"
             },
             "sync": 0,
             "volume": 1.0
@@ -181,35 +432,7 @@
                 },
                 "opacity": 100,
                 "read_from_file": false,
-                "text": "“听君一言”技能CD "
-            },
-            "sync": 0,
-            "volume": 1.0
-        },
-        {
-            "deinterlace_field_order": 0,
-            "deinterlace_mode": 0,
-            "enabled": true,
-            "flags": 0,
-            "hotkeys": {
-                "libobs.mute": [],
-                "libobs.push-to-mute": [],
-                "libobs.push-to-talk": [],
-                "libobs.unmute": []
-            },
-            "id": "ffmpeg_source",
-            "mixers": 15,
-            "muted": false,
-            "name": "多媒体 1",
-            "push-to-mute": false,
-            "push-to-mute-delay": 0,
-            "push-to-talk": false,
-            "push-to-talk-delay": 0,
-            "settings": {
-                "is_local_file": true,
-                "local_file": "R:\\15mins_countdown.mp4",
-                "looping": true,
-                "restart_on_activate": false
+                "text": "听君一言"
             },
             "sync": 0,
             "volume": 1.0
@@ -238,7 +461,7 @@
                 },
                 "opacity": 100,
                 "read_from_file": false,
-                "text": "--------------\r\n《== 2017年 51周 - 头图简介：\r\n出自G社2000年动画《特别的她》\r\n第3话 - Maruraba @ 00:04\r\n“戏称”办公室表子(office slut)"
+                "text": "--------------\r\n☜ 2017年 53周 - 头图简介：\r\n出自G社2000年动画《特别的她》\r\n第3话 - Maruraba @ 00:04\r\n“戏称”办公室表子(office slut)"
             },
             "sync": 0,
             "volume": 1.0
@@ -315,7 +538,10 @@
             "deinterlace_mode": 0,
             "enabled": true,
             "flags": 0,
-            "hotkeys": {},
+            "hotkeys": {
+                "libobs.hide_scene_item.显示器 1": [],
+                "libobs.show_scene_item.显示器 1": []
+            },
             "id": "scene",
             "mixers": 0,
             "muted": false,
@@ -325,7 +551,35 @@
             "push-to-talk": false,
             "push-to-talk-delay": 0,
             "settings": {
-                "items": []
+                "items": [
+                    {
+                        "align": 5,
+                        "bounds": {
+                            "x": 1152.0,
+                            "y": 720.0
+                        },
+                        "bounds_align": 0,
+                        "bounds_type": 0,
+                        "crop_bottom": 0,
+                        "crop_left": 0,
+                        "crop_right": 0,
+                        "crop_top": 0,
+                        "flip_horizonally": false,
+                        "flip_vertically": false,
+                        "name": "显示器 1",
+                        "pos": {
+                            "x": 64.0,
+                            "y": 0.0
+                        },
+                        "rot": 0.0,
+                        "scale": {
+                            "x": 0.80000001192092896,
+                            "y": 0.80000001192092896
+                        },
+                        "scale_filter": "disable",
+                        "visible": true
+                    }
+                ]
             },
             "sync": 0,
             "volume": 1.0
@@ -336,14 +590,38 @@
             "enabled": true,
             "flags": 0,
             "hotkeys": {
-                "libobs.hide_scene_item.图片 1": [],
-                "libobs.hide_scene_item.多媒体 1": [],
-                "libobs.hide_scene_item.文本 1": [],
-                "libobs.hide_scene_item.游戏源 1": [],
-                "libobs.show_scene_item.图片 1": [],
-                "libobs.show_scene_item.多媒体 1": [],
-                "libobs.show_scene_item.文本 1": [],
-                "libobs.show_scene_item.游戏源 1": []
+                "libobs.hide_scene_item.media_mountain": [],
+                "libobs.hide_scene_item.mnt_pic_hbar": [],
+                "libobs.hide_scene_item.mnt_pic_status_roundbox": [],
+                "libobs.hide_scene_item.mnt_pic_vbar": [],
+                "libobs.hide_scene_item.mnt_txt_librarylist1": [],
+                "libobs.hide_scene_item.mnt_txt_librarylist2": [],
+                "libobs.hide_scene_item.mnt_txt_librarylist_title": [],
+                "libobs.hide_scene_item.mnt_txt_player": [],
+                "libobs.hide_scene_item.mnt_txt_status": [],
+                "libobs.hide_scene_item.mnt_txt_usage_exp": [],
+                "libobs.hide_scene_item.pic_roundbox": [],
+                "libobs.hide_scene_item.pic_showoff": [],
+                "libobs.hide_scene_item.txt_explain_countdown": [],
+                "libobs.hide_scene_item.txt_explain_showoff": [],
+                "libobs.hide_scene_item.txt_sourcecode": [],
+                "libobs.hide_scene_item.txt_yayan": [],
+                "libobs.show_scene_item.media_mountain": [],
+                "libobs.show_scene_item.mnt_pic_hbar": [],
+                "libobs.show_scene_item.mnt_pic_status_roundbox": [],
+                "libobs.show_scene_item.mnt_pic_vbar": [],
+                "libobs.show_scene_item.mnt_txt_librarylist1": [],
+                "libobs.show_scene_item.mnt_txt_librarylist2": [],
+                "libobs.show_scene_item.mnt_txt_librarylist_title": [],
+                "libobs.show_scene_item.mnt_txt_player": [],
+                "libobs.show_scene_item.mnt_txt_status": [],
+                "libobs.show_scene_item.mnt_txt_usage_exp": [],
+                "libobs.show_scene_item.pic_roundbox": [],
+                "libobs.show_scene_item.pic_showoff": [],
+                "libobs.show_scene_item.txt_explain_countdown": [],
+                "libobs.show_scene_item.txt_explain_showoff": [],
+                "libobs.show_scene_item.txt_sourcecode": [],
+                "libobs.show_scene_item.txt_yayan": []
             },
             "id": "scene",
             "mixers": 0,
@@ -355,33 +633,6 @@
             "push-to-talk-delay": 0,
             "settings": {
                 "items": [
-                    {
-                        "align": 5,
-                        "bounds": {
-                            "x": 960.0,
-                            "y": 720.0
-                        },
-                        "bounds_align": 0,
-                        "bounds_type": 0,
-                        "crop_bottom": 0,
-                        "crop_left": 0,
-                        "crop_right": 0,
-                        "crop_top": 0,
-                        "flip_horizonally": false,
-                        "flip_vertically": false,
-                        "name": "pic_showoff",
-                        "pos": {
-                            "x": 0.0,
-                            "y": 0.0
-                        },
-                        "rot": 0.0,
-                        "scale": {
-                            "x": 0.46875,
-                            "y": 0.46875
-                        },
-                        "scale_filter": "disable",
-                        "visible": true
-                    },
                     {
                         "align": 5,
                         "bounds": {
@@ -450,42 +701,15 @@
                         "crop_top": 0,
                         "flip_horizonally": false,
                         "flip_vertically": false,
-                        "name": "多媒体 1",
-                        "pos": {
-                            "x": 1173.0,
-                            "y": 330.0
-                        },
-                        "rot": 0.0,
-                        "scale": {
-                            "x": 0.390625,
-                            "y": 0.3928571343421936
-                        },
-                        "scale_filter": "disable",
-                        "visible": true
-                    },
-                    {
-                        "align": 5,
-                        "bounds": {
-                            "x": 0.0,
-                            "y": 0.0
-                        },
-                        "bounds_align": 0,
-                        "bounds_type": 0,
-                        "crop_bottom": 0,
-                        "crop_left": 0,
-                        "crop_right": 0,
-                        "crop_top": 0,
-                        "flip_horizonally": false,
-                        "flip_vertically": false,
                         "name": "txt_explain_countdown",
                         "pos": {
-                            "x": 960.0,
-                            "y": 332.0
+                            "x": 986.0,
+                            "y": 333.0
                         },
                         "rot": 0.0,
                         "scale": {
-                            "x": 0.91056913137435913,
-                            "y": 0.90625
+                            "x": 1.25,
+                            "y": 1.25
                         },
                         "scale_filter": "disable",
                         "visible": true
@@ -504,7 +728,7 @@
                         "crop_top": 0,
                         "flip_horizonally": false,
                         "flip_vertically": false,
-                        "name": "文本 1",
+                        "name": "txt_yayan",
                         "pos": {
                             "x": 972.0,
                             "y": 386.0
@@ -531,10 +755,118 @@
                         "crop_top": 0,
                         "flip_horizonally": false,
                         "flip_vertically": false,
-                        "name": "图片 1",
+                        "name": "txt_sourcecode",
+                        "pos": {
+                            "x": 966.0,
+                            "y": 280.0
+                        },
+                        "rot": 0.0,
+                        "scale": {
+                            "x": 0.48159509897232056,
+                            "y": 0.4848484992980957
+                        },
+                        "scale_filter": "disable",
+                        "visible": false
+                    },
+                    {
+                        "align": 5,
+                        "bounds": {
+                            "x": 960.0,
+                            "y": 720.0
+                        },
+                        "bounds_align": 0,
+                        "bounds_type": 0,
+                        "crop_bottom": 0,
+                        "crop_left": 0,
+                        "crop_right": 0,
+                        "crop_top": 0,
+                        "flip_horizonally": false,
+                        "flip_vertically": false,
+                        "name": "pic_showoff",
                         "pos": {
                             "x": 0.0,
                             "y": 0.0
+                        },
+                        "rot": 0.0,
+                        "scale": {
+                            "x": 0.46875,
+                            "y": 0.46875
+                        },
+                        "scale_filter": "disable",
+                        "visible": true
+                    },
+                    {
+                        "align": 5,
+                        "bounds": {
+                            "x": 960.0,
+                            "y": 720.0
+                        },
+                        "bounds_align": 0,
+                        "bounds_type": 0,
+                        "crop_bottom": 0,
+                        "crop_left": 0,
+                        "crop_right": 0,
+                        "crop_top": 0,
+                        "flip_horizonally": false,
+                        "flip_vertically": false,
+                        "name": "pic_roundbox",
+                        "pos": {
+                            "x": 24.0,
+                            "y": 26.0
+                        },
+                        "rot": 0.0,
+                        "scale": {
+                            "x": 0.8837890625,
+                            "y": 0.88411456346511841
+                        },
+                        "scale_filter": "disable",
+                        "visible": false
+                    },
+                    {
+                        "align": 5,
+                        "bounds": {
+                            "x": 960.0,
+                            "y": 720.0
+                        },
+                        "bounds_align": 0,
+                        "bounds_type": 0,
+                        "crop_bottom": 186,
+                        "crop_left": 0,
+                        "crop_right": 0,
+                        "crop_top": 124,
+                        "flip_horizonally": false,
+                        "flip_vertically": false,
+                        "name": "mnt_pic_status_roundbox",
+                        "pos": {
+                            "x": 555.0,
+                            "y": 325.0
+                        },
+                        "rot": 0.0,
+                        "scale": {
+                            "x": 0.3232421875,
+                            "y": 0.3229166567325592
+                        },
+                        "scale_filter": "disable",
+                        "visible": false
+                    },
+                    {
+                        "align": 5,
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "bounds_align": 0,
+                        "bounds_type": 0,
+                        "crop_bottom": 0,
+                        "crop_left": 0,
+                        "crop_right": 0,
+                        "crop_top": 0,
+                        "flip_horizonally": false,
+                        "flip_vertically": false,
+                        "name": "mnt_txt_librarylist2",
+                        "pos": {
+                            "x": 319.0,
+                            "y": 131.0
                         },
                         "rot": 0.0,
                         "scale": {
@@ -542,9 +874,319 @@
                             "y": 1.0
                         },
                         "scale_filter": "disable",
-                        "visible": true
+                        "visible": false
+                    },
+                    {
+                        "align": 5,
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "bounds_align": 0,
+                        "bounds_type": 0,
+                        "crop_bottom": 0,
+                        "crop_left": 0,
+                        "crop_right": 0,
+                        "crop_top": 0,
+                        "flip_horizonally": false,
+                        "flip_vertically": false,
+                        "name": "mnt_txt_librarylist1",
+                        "pos": {
+                            "x": 77.0,
+                            "y": 133.0
+                        },
+                        "rot": 0.0,
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0
+                        },
+                        "scale_filter": "disable",
+                        "visible": false
+                    },
+                    {
+                        "align": 5,
+                        "bounds": {
+                            "x": 41.0,
+                            "y": 720.0
+                        },
+                        "bounds_align": 0,
+                        "bounds_type": 0,
+                        "crop_bottom": 0,
+                        "crop_left": 0,
+                        "crop_right": 0,
+                        "crop_top": 0,
+                        "flip_horizonally": false,
+                        "flip_vertically": false,
+                        "name": "mnt_pic_vbar",
+                        "pos": {
+                            "x": 518.0,
+                            "y": 38.0
+                        },
+                        "rot": 0.0,
+                        "scale": {
+                            "x": 0.84090906381607056,
+                            "y": 0.84057968854904175
+                        },
+                        "scale_filter": "disable",
+                        "visible": false
+                    },
+                    {
+                        "align": 5,
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "bounds_align": 0,
+                        "bounds_type": 0,
+                        "crop_bottom": 0,
+                        "crop_left": 0,
+                        "crop_right": 0,
+                        "crop_top": 0,
+                        "flip_horizonally": false,
+                        "flip_vertically": false,
+                        "name": "mnt_pic_hbar",
+                        "pos": {
+                            "x": 38.0,
+                            "y": 481.0
+                        },
+                        "rot": 0.0,
+                        "scale": {
+                            "x": 0.85137796401977539,
+                            "y": 0.8571428656578064
+                        },
+                        "scale_filter": "disable",
+                        "visible": false
+                    },
+                    {
+                        "align": 5,
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "bounds_align": 0,
+                        "bounds_type": 0,
+                        "crop_bottom": 0,
+                        "crop_left": 0,
+                        "crop_right": 0,
+                        "crop_top": 0,
+                        "flip_horizonally": false,
+                        "flip_vertically": false,
+                        "name": "mnt_txt_status",
+                        "pos": {
+                            "x": 567.0,
+                            "y": 340.0
+                        },
+                        "rot": 0.0,
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0
+                        },
+                        "scale_filter": "disable",
+                        "visible": false
+                    },
+                    {
+                        "align": 5,
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "bounds_align": 0,
+                        "bounds_type": 0,
+                        "crop_bottom": 0,
+                        "crop_left": 0,
+                        "crop_right": 0,
+                        "crop_top": 0,
+                        "flip_horizonally": false,
+                        "flip_vertically": false,
+                        "name": "mnt_txt_player",
+                        "pos": {
+                            "x": 72.0,
+                            "y": 519.0
+                        },
+                        "rot": 0.0,
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0
+                        },
+                        "scale_filter": "disable",
+                        "visible": false
+                    },
+                    {
+                        "align": 5,
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "bounds_align": 0,
+                        "bounds_type": 0,
+                        "crop_bottom": 0,
+                        "crop_left": 0,
+                        "crop_right": 0,
+                        "crop_top": 0,
+                        "flip_horizonally": false,
+                        "flip_vertically": false,
+                        "name": "mnt_txt_usage_exp",
+                        "pos": {
+                            "x": 555.0,
+                            "y": 84.0
+                        },
+                        "rot": 0.0,
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0
+                        },
+                        "scale_filter": "disable",
+                        "visible": false
+                    },
+                    {
+                        "align": 5,
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "bounds_align": 0,
+                        "bounds_type": 0,
+                        "crop_bottom": 0,
+                        "crop_left": 0,
+                        "crop_right": 0,
+                        "crop_top": 0,
+                        "flip_horizonally": false,
+                        "flip_vertically": false,
+                        "name": "mnt_txt_librarylist_title",
+                        "pos": {
+                            "x": 201.0,
+                            "y": 83.0
+                        },
+                        "rot": 0.0,
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0
+                        },
+                        "scale_filter": "disable",
+                        "visible": false
                     }
                 ]
+            },
+            "sync": 0,
+            "volume": 1.0
+        },
+        {
+            "deinterlace_field_order": 0,
+            "deinterlace_mode": 0,
+            "enabled": true,
+            "flags": 0,
+            "hotkeys": {},
+            "id": "monitor_capture",
+            "mixers": 0,
+            "muted": false,
+            "name": "显示器 1",
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "settings": {
+                "capture_cursor": true,
+                "monitor": 0
+            },
+            "sync": 0,
+            "volume": 1.0
+        },
+        {
+            "deinterlace_field_order": 0,
+            "deinterlace_mode": 0,
+            "enabled": true,
+            "flags": 0,
+            "hotkeys": {},
+            "id": "text_gdiplus",
+            "mixers": 0,
+            "muted": false,
+            "name": "mnt_txt_player",
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "settings": {
+                "color": 16777215,
+                "file": "R:\\txt\\player.txt",
+                "font": {
+                    "face": "微软雅黑",
+                    "flags": 0,
+                    "size": 32
+                },
+                "opacity": 100,
+                "read_from_file": true,
+                "text": "我今天没吃药，感觉自己萌萌哒。"
+            },
+            "sync": 0,
+            "volume": 1.0
+        },
+        {
+            "deinterlace_field_order": 0,
+            "deinterlace_mode": 0,
+            "enabled": true,
+            "flags": 0,
+            "hotkeys": {},
+            "id": "text_gdiplus",
+            "mixers": 0,
+            "muted": false,
+            "name": "mnt_txt_usage_exp",
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "settings": {
+                "color": 16777215,
+                "file": "R:\\txt\\usage_explain.txt",
+                "font": {
+                    "face": "微软雅黑",
+                    "flags": 0,
+                    "size": 29
+                },
+                "opacity": 100,
+                "read_from_file": true,
+                "text": "我今天没吃药，感觉自己萌萌哒。"
+            },
+            "sync": 0,
+            "volume": 1.0
+        },
+        {
+            "deinterlace_field_order": 0,
+            "deinterlace_mode": 0,
+            "enabled": true,
+            "filters": [
+                {
+                    "deinterlace_field_order": 0,
+                    "deinterlace_mode": 0,
+                    "enabled": true,
+                    "flags": 0,
+                    "hotkeys": {},
+                    "id": "color_filter",
+                    "mixers": 0,
+                    "muted": false,
+                    "name": "color_filter",
+                    "push-to-mute": false,
+                    "push-to-mute-delay": 0,
+                    "push-to-talk": false,
+                    "push-to-talk-delay": 0,
+                    "settings": {
+                        "opacity": 64
+                    },
+                    "sync": 0,
+                    "volume": 1.0
+                }
+            ],
+            "flags": 0,
+            "hotkeys": {},
+            "id": "image_source",
+            "mixers": 0,
+            "muted": false,
+            "name": "mnt_pic_status_roundbox",
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "settings": {
+                "file": "C:\\Users\\dummyred\\Pictures\\background_roundbox.png"
             },
             "sync": 0,
             "volume": 1.0

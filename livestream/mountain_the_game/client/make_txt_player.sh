@@ -1,10 +1,8 @@
 #!/bin/bash --
 # Update player.txt on propose
 
-# MAGIC global
-FD_DIST="/cygdrive/r/txt/player.txt"
-DEFAULT_BEAT=400
-MAGIC_SHEET_NIL="Tuturu~ ♫"
+# Import configure
+source env.conf
 
 # Init player.txt
 if [[ -f $FD_DIST ]];then
@@ -55,7 +53,7 @@ do_current() {
     	    if [[ -z $_beat_infile ]];then
 	    	_beat=$DEFAULT_BEAT
 	    else
-    		_beat=$(echo $_beat_infile | sed 's>^%\S*\(\d*\)\S*>\1>' | sed 's/[\r\n]//g')
+    		_beat=$(echo $_beat_infile | sed 's>^%\S*\(\d*\)\S*>\1>' | sed 's/[\r\n]//g') # TODO
 	    fi
 	fi
 	

@@ -1,15 +1,8 @@
 #!/bin/bash --
-# Trap SIGUSER1 to parse playlist
+# Trap SIGUSR1 signal to parse playlist
 
-SEC_INTRALIST_INTERVAL=3
-SEC_AWAKE_INTERVAL=5
-FD_PLAYLIST_HANDLER_PIDFILE="/tmp/playlist_handler.pid"
-FD_PROCESS_LOCK="/tmp/playlist_handler.lock"
-URL_PLAYLIST="/cygdrive/r/txt/playlist.txt"
-FD_DIST="/cygdrive/r/txt/player.txt"
-MAGIC_SHEET_NIL="Tuturu~ ♫"
-MAGIC_USER_NIL="Akarin"
-
+# Import configure
+source env.conf
 
 updatePlayerTXTCurrent() {
     local _user=$1
@@ -49,22 +42,22 @@ parsePlaylist() {
     # Process playlist if no lock
     if [[ ! -f $FD_PROCESS_LOCK ]];then
 	touch $FD_PROCESS_LOCK
-	_line=$(wc -l $URL_PLAYLIST | cut -d " " -f1)
+	_line=$(wc -l $FD_PLAYLIST | cut -d " " -f1)
 	
 	while [[ $_line -gt 0 ]];
 	do
 	    if [[ $_line -eq 1 ]];then
 		updatePlayerTXTNext "$MAGIC_USER_NIL" "$MAGIC_SHEET_NIL"
 	    else
-		_t_user=$(sed -n '2,2p' $URL_PLAYLIST | awk -F '>' '{print $1}')
-		_t_sheet=$(sed -n '2,2p' $URL_PLAYLIST | awk -F '>' '{print $2}')
+		_t_user=$(sed -n '2,2p' $FD_PLAYLIST | awk -F '>' '{print $1}')
+		_t_sheet=$(sed -n '2,2p' $FD_PLAYLIST | awk -F '>' '{print $2}')
 		updatePlayerTXTNext  "$_t_user" "$_t_sheet"
 	    fi
 	    
 	    # Get top metadata
-	    _t_user=$(sed -n '1,1p' $URL_PLAYLIST | awk -F '>' '{print $1}')
-	    _t_sheet=$(sed -n '1,1p' $URL_PLAYLIST | awk -F '>' '{print $2}')
-	    _t_user_beat=$(sed -n '1,1p' $URL_PLAYLIST | awk -F '>' '{print $3}')
+	    _t_user=$(sed -n '1,1p' $FD_PLAYLIST | awk -F '>' '{print $1}')
+	    _t_sheet=$(sed -n '1,1p' $FD_PLAYLIST | awk -F '>' '{print $2}')
+	    _t_user_beat=$(sed -n '1,1p' $FD_PLAYLIST | awk -F '>' '{print $3}')
 	    updatePlayerTXTCurrent "$_t_user" "$_t_sheet" "$_t_user_beat"
 	    updatePlayerTXTPointerMetadata "$_t_sheet"
 	    
@@ -73,8 +66,8 @@ parsePlaylist() {
 	    updatePlayerTXTWait
 	    sleep $SEC_INTRALIST_INTERVAL
 	    
-	    sed -i '1,1d' $URL_PLAYLIST
-	    _line=$(wc -l $URL_PLAYLIST | cut -d " " -f1) # daemon_danmaku_checker would async update playlist.txt
+	    sed -i '1,1d' $FD_PLAYLIST
+	    _line=$(wc -l $FD_PLAYLIST | cut -d " " -f1) # daemon_danmaku_checker would async update playlist.txt
         done
 	# Cleanup player.txt on empty playlist
 	updatePlayerTXTCurrent "$MAGIC_USER_NIL" "$MAGIC_SHEET_NIL"
@@ -88,9 +81,9 @@ parseSheet() {
     local _user_beat="$2"
 
     if [[ ! -z $_user_beat ]];then
-        /cygdrive/c/Program\ Files\ \(x86\)/ahk/AutoHotkeyU32.exe mnt_player-ng.ahk "$_url_sheet" "$_user_beat"
+        /cygdrive/c/Program\ Files\ \(x86\)/ahk/AutoHotkeyU32.exe mnt_player.ahk "$_url_sheet" "$_user_beat"
     else
-	/cygdrive/c/Program\ Files\ \(x86\)/ahk/AutoHotkeyU32.exe mnt_player-ng.ahk "$_url_sheet"
+	/cygdrive/c/Program\ Files\ \(x86\)/ahk/AutoHotkeyU32.exe mnt_player.ahk "$_url_sheet"
     fi
 }
 

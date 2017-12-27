@@ -1,19 +1,17 @@
 #!/bin/bash --
 # Make txt, list sheets dir in pretty way
 
-FD_TEMP=/tmp/temp.librarylist.raw
-FD_TEMP_FIN=/tmp/temp.librarylist.fin.raw
-FD_DEST1=/cygdrive/r/txt/librarylist_1.txt
-FD_DEST2=/cygdrive/r/txt/librarylist_2.txt
-RPATH_SHEET_DIR="sheets"
+# Import configure
+source env.conf
+
+# MAGIC global variables
 STR_SPECIAL_SHEET="danmaku"
-LIMIT_LINES_FILE1=12
 
 # Init
 _t=""
 rm -f $FD_TEMP
 
-# Real world character length
+# Real World character Length
 LEN_NON_ANSI=2
 getRWLength() {
     local _string=$1
