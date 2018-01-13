@@ -1,21 +1,71 @@
 #!/bin/env bash
-# expend to anything connected, eDP1 is laptop's screen
+# USAGE: dualduel.sh stop   -- disconnect all external screen, enable embed one
+#        dualduel.sh mirror -- enable both external and embed screens.
+#        dualduel.sh single -- enable only the external screen, disable the embed one
+#        dualduel.sh expand -- expand the external screen to left side of embed one
 
-FALLBACK="eDP1"
-EXCEPT="eDP|VIRTUAL"
-CON_TARGET=`xrandr | grep ' connected' | grep -vE "${EXCEPT}" | cut -f1 -d\ `
-DISCON_TARGET=`xrandr | grep ' disconnected' | grep -vE "${EXCEPT}" | cut -f1 -d\ `
-DISCON_TARGET=${DISCON_TARGET:-${CON_TARGET}} # HDMI is hotplug-able, unplug then trigger stop cmd
+# MAGIC parts
+SCR_EMBED="eDP1"
+SCR_EXTR="HDMI1"
+
+do_stop() {
+    xrandr --output $SCR_EXTR --off --output $SCR_EMBED --auto
+
+}
+
+do_mirror() {
+    xrandr --output $SCR_EXTR --auto --output $SCR_EMBED --auto
+
+}
+
+do_single() {
+    xrandr --output $SCR_EXTR --auto --output $SCR_EMBED --off
+
+}
+
+do_expand() {
+    xrandr --output $SCR_EXTR --auto --left-of $SCR_EMBED --output $SCR_EMBED --auto
+
+}
 
 
-if [[ "$1" == "stop" ]]
-then xrandr --output ${DISCON_TARGET} --off --output ${FALLBACK} --auto
-fi
+is_external_disconnected() {
+     xrandr | grep $SCR_EXTR | grep -qi disconnected
 
-if [[ "$1" == "mirror" ]]
-then xrandr --output $CON_TARGET --auto
-fi
-if [[ "$1" == "single" ]]
-then xrandr --output $CON_TARGET --auto --output ${FALLBACK} --off
-else xrandr --output $CON_TARGET --auto --left-of ${FALLBACK} # default to expand
-fi
+}
+
+
+case "$1" in 
+stop)
+    do_stop
+;;
+
+mirror)
+    if is_external_disconnected;then
+        do_stop
+    else
+        do_mirror
+    fi
+;;
+
+single)
+    if is_external_disconnected;then
+        do_stop
+    else
+        do_single
+    fi
+;;
+
+expand)
+    if is_external_disconnected;then
+        do_stop
+    else
+        do_expand
+    fi
+;;
+
+*)
+    echo "USAGE: $0 <stop|mirror|single|expand>"
+    exit 1
+
+esac
