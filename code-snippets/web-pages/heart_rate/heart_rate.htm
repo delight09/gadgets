@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<!-- USAGE: browser query like file:///home/delight09/hr/heart_rate.htm?rdata=69|88|80|99|101|90&dlabel=heart%20rate -->
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>Line Chart</title>
+    <script src="heart_rate_files/Chart.js"></script><style type="text/css">/* Chart.js */
+@-webkit-keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}@keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}.chartjs-render-monitor{-webkit-animation:chartjs-render-animation 0.001s;animation:chartjs-render-animation 0.001s;}</style>
+    <script>
+	window.chartColors = {
+	red: 'rgb(255, 99, 132)',
+	orange: 'rgb(255, 159, 64)',
+	yellow: 'rgb(255, 205, 86)',
+	green: 'rgb(75, 192, 192)',
+	blue: 'rgb(54, 162, 235)',
+	purple: 'rgb(153, 102, 255)',
+	grey: 'rgb(201, 203, 207)'
+};
+</script>
+    <style>
+    canvas{
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+    }
+    </style>
+</head>
+
+<body>
+    <div style="width:100%;"><div style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;" class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
+        <canvas id="canvas" style="background-color: #FAF2E5; display: block; width: 712px; height: 534px;" width="712" height="534" class="chartjs-render-monitor"></canvas>
+    </div>
+    <br>
+    <br>
+
+    <script>
+	    // Parse query string and initialize
+		function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+	var req = {};
+	req.rdata = getParameterByName('rdata');
+	req.dlabel = getParameterByName('dlabel');
+	
+	
+	// init
+	var _d="|";
+	req.data = (req.rdata.match(/[^|]+/g) || []).map(function(e, i) {return e;});
+	req.rdata += _d;  // dirty hack
+	req.labels = (req.rdata.match(/\|/g) || []).map(function(e, i) {return i;});
+	
+        var config = {
+            type: 'line',
+            data: {
+                labels: req.labels,
+                datasets: [{
+                    label: req.dlabel,
+                    backgroundColor: window.chartColors.red,
+                    borderColor: window.chartColors.red,
+                    data: req.data,
+                    fill: false,
+                }]
+            },
+            options: {
+                responsive: true,
+                title:{
+                    display:false,
+                    text:'Chart.js Line Chart'
+                },
+                tooltips: {
+                    mode: 'index',
+                    intersect: false,
+                },
+                hover: {
+                    mode: 'nearest',
+                    intersect: true
+                },
+                scales: {
+                    xAxes: [{
+                        display: true,
+                        scaleLabel: {
+                            display: true,
+                            labelString: '采样次数'
+                        }
+                    }],
+                    yAxes: [{
+                        display: true,
+						ticks: {
+                                suggestedMin: 55,
+                                steps: 10,
+                                stepValue: 5,
+                                max: 130
+                            },
+                        scaleLabel: {
+                            display: true,
+                            labelString: '每分钟心跳'
+                        }
+                    }]
+                }
+            }
+        };
+
+        window.onload = function() {
+            var ctx = document.getElementById("canvas").getContext("2d");
+            window.myLine = new Chart(ctx, config);
+        };
+		
+    </script>
+
+
+
+</body></html>
