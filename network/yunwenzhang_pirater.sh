@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Pirate the baiduyun wenzhang pirater
+# Pirate the baiduyun wenzhang pirater, cuz Baidu sucks at its service
 # 
 # NOTICE: Web pages will downloaded in this script's folder,
 #             please make sure the write permission in folder.
@@ -43,6 +43,7 @@ parse_arguments_for_wget() {
 }
 
 ##  MAIN
+set -e
 if [[ -d ./wenzhang.baidu.com ]];then
   echo "/!\\Site seems downloaded, please remove \`\`wenzhang.baidu.com'' folder manually, \
 before execute the script!"
@@ -52,8 +53,8 @@ patch_remove_option_compress
 patch_fix_header_accept_encoding
 
 # eval wget command
-eval "wget --mirror --span-hosts \
- --domains='wenzhang.baidu.com,swenzhang.baidu.com,wenzhang.bdstatic.com,img.baidu.com'\
+eval "wget --mirror --span-hosts -e robots=off --restrict-file-names=ascii\
+ --domains='wenzhang.baidu.com,swenzhang.baidu.com,wenzhang.bdstatic.com,img.baidu.com,hiphotos.baidu.com'\
  --page-requisites --convert-links $(parse_arguments_for_wget) $(parse_url)"
 
 # make sure site is downloaded and patch the URL query string
@@ -85,6 +86,7 @@ patch_content_indexhtml_viewkey() {
 
 }
 
+echo "Patching query strings in URL, please wait..."
 if [[ -d ./wenzhang.baidu.com/page ]];then
   for i in $(find ./*.com -type f)
   do
@@ -102,3 +104,4 @@ sed -i -r 's/padding:[ 0-9px]+;/padding: 3em;/g'\
   swenzhang.baidu.com/css/pjt/site/page/detailArticle.css*
 
 fi
+echo "Success!"
