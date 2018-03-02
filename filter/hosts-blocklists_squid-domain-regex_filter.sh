@@ -4,11 +4,13 @@
 
 output_regex_domain() {
   grep -vE '(::|^#|^$)' "$1" | awk -F '/' '{print $2}' \
-    | sed -e 's>^>(^|\.)>' -e 's>$>$>'
+    | sed -e 's>^>(^|\.)>' -e 's>$>$>' -e 's>\.>\\.>g'
+
 }
 
 output_hostname() {
-  grep -vE '(::|^#|^$)' "$1" | awk -F ' ' '{print $2}'
+  grep -vE '(::|^#|^$)' "$1" | awk -F ' ' '{print $2}' \
+    | sed -e 's>^>^>' -e 's>$>$>' -e 's>\.>\\.>g'
 
 }
 

@@ -27,6 +27,8 @@
 
 cacheIsShared = false
 dontTrustVaryETag = true
+allowedPorts = 1-65535
+tunnelAllowedPorts = 1-65535
 
 # Uncomment this if you want to use a parent SOCKS proxy:
 
