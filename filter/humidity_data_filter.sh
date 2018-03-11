@@ -1,4 +1,4 @@
-#!/usr/bin/bash --
+#!/usr/bin/env bash
 # Update index.html with last hour humidity summary
 
 
