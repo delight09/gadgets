@@ -1,0 +1,45 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<style>
+#wrapper {
+  padding: 2em 6em;
+  text-align: center;
+}
+
+#hitokoto {
+  background-color: #40e0d0;
+  padding: 0.5em 2em;
+  font-size: 1.5em;
+}
+
+span {
+  float: right;
+}
+</style>
+</head>
+<body>
+<div id="wrapper">
+<div id="hitokoto"></div>
+<span id="author"></span>
+</div>
+
+<script>
+  // full list=> https://hitokoto.cn/api
+  var arr_sourcelist = ['a', 'b', 'c', 'd'];
+  
+  var r_index = parseInt(Math.random() * 10) % arr_sourcelist.length;
+  var xhr = new XMLHttpRequest();
+  xhr.open('get', 'https://sslapi.hitokoto.cn/?encode=json&c=' + arr_sourcelist[r_index]);
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === 4) {
+      var data = JSON.parse(xhr.responseText);
+      var hitokoto = document.getElementById('hitokoto');
+      hitokoto.innerText = data.hitokoto;
+      var author = document.getElementById('author');
+      author.innerText = '-- 《' + data.from + '》';
+    }
+  }
+  xhr.send();
+</script>
+
+
+</body></html>

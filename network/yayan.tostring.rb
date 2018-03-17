@@ -3,7 +3,7 @@
 # NOTICE: API doc, http://hitokoto.cn/api
 # USAGE: yayan.tostring.rb 'g,f,e'
 
-require 'json/pure'
+require 'json'
 require 'curb'
 
 def fetch_yiyan(str_filter)
