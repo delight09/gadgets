@@ -1,9 +1,11 @@
 #!/usr/bin/python3
-#结合OBS的VLC源和tuna插件，每次开播从上次断开的一集前继续播放
+# OBS自启推流启动器
+# 特性：结合OBS的VLC源和tuna插件，每次开播从上次断开的一集继续播放推流
 
 import argparse as ap
 import re
 from pathlib import Path
+import subprocess 
 
 def fetch_curr_sp():
     with open(url_tuna_txt, encoding='utf-8-sig') as fd:
@@ -11,6 +13,10 @@ def fetch_curr_sp():
         str_tuna  = re.sub("^S([0-9]*)E([0-9\-]*).*",r'\1%\2', str_tuna)
         s = re.sub("^([0-9]*)%.*",r'\1', str_tuna)
         p = re.sub(".*%([0-9]*)-?.*",r'\1', str_tuna)
+        try:
+            int(s)
+        except:
+            s = p = 1
         return int(s), int(p)
 
 
@@ -18,6 +24,7 @@ arr_himym_sp = [22, 22, 20, 24, 24, 24, 24, 24, 24]
 url_tuna_txt = r"C:\Users\jiahao\Documents\2020-himym.txt"
 url_output_m3u = r"C:\Users\jiahao\Documents\himym_playlist.m3u"
 url_dir_video = r"C:\Users\jiahao\Desktop\tio"
+url_dir_obs_wd = r"C:\Program Files\obs-studio\bin\64bit"
 list_pattern_video = ["*.mp4", "*.mkv"]
 
 
@@ -63,3 +70,15 @@ list_url_video = list_url_video[int_init_play:] + list_url_video[:int_init_play]
 with open(url_output_m3u , 'w') as fd:
     for url_curr in list_url_video:
         fd.write('%s\n' % url_curr)
+
+
+# 调用运行OBS开始推流
+cmd = [
+        r'C:\Program Files\obs-studio\bin\64bit\obs64.exe',
+        '--startstreaming',
+        '--minimize-to-tray',
+        '--scene "v0310"',
+        '--profile "himym"'
+      ]
+subprocess.run(cmd,shell=False,stdin=None,stdout=None,stderr=None,cwd=url_dir_obs_wd,close_fds=True)
+
