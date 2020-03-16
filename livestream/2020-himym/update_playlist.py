@@ -74,7 +74,7 @@ with open(url_output_m3u , 'w') as fd:
 
 # 调用运行OBS开始推流
 cmd = [
-        r'C:\Program Files\obs-studio\bin\64bit\obs64.exe',
+        "{}\obs64.exe".format(url_dir_obs_wd),
         '--startstreaming',
         '--minimize-to-tray',
         '--scene "v0310"',
